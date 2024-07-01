@@ -1,17 +1,24 @@
 package com.alessandrociaccio.ProjectDandD.features.character;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Table(name = "character")
+@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@Builder
-public class CharacterDto {
+@NoArgsConstructor
+public class CharacterDo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "character_id")
     private Long id;
+    @Column(nullable = false)
     private String name;
     private String details;
+    @Column(nullable = false)
     private String classe;
     private String race;
     private String characteristics;
@@ -50,5 +57,4 @@ public class CharacterDto {
     private String money;
     private String rations;
     private String waterSkin;
-
 }
