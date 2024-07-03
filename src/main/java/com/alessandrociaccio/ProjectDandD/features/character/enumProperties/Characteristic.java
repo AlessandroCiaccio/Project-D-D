@@ -9,11 +9,13 @@ public enum Characteristic {
     CHARISMA("Charisma");
 
     private final String characteristic;
-    Characteristic (String a){
-        this.characteristic=a;
+
+    Characteristic(String a) {
+        this.characteristic = a;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return characteristic;
     }
 }
