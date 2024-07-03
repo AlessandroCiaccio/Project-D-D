@@ -1,9 +1,15 @@
 package com.alessandrociaccio.ProjectDandD.features.character;
 
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Characteristic;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Classe;
+import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Details;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Race;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "character")
 @Entity
@@ -17,44 +23,44 @@ public class CharacterDo {
     private Long id;
     @Column(nullable = false)
     private String name;
-    private String details;
+    private Details details;
     @Column(nullable = false)
-    private String classe;
-    private String race;
-    private String characteristics;
-    private String ability;
-    private String armorClass;
-    private String maxHp;
-    private String hitPoints;
-    private String deathSaveFailures;
-    private String initiative;
-    private String speed;
-    private String experience;
-    private String training;
-    private String fate;
-    private String inspiration;
-    private String spellCastingAbility;
-    private String spellSaveDc;
-    private String spellAttackBonus;
-    private String actions;
-    private String attacks;
-    private String spells;
-    private String proficiencies;
-    private String languages;
-    private String armorProficiencies;
-    private String weaponsProficiencies;
-    private String passivePerception;
-    private String senses;
-    private String resistances;
-    private String immunities;
-    private String featuresAndTraits;
+    private Classe classe;
+    private Race race;
+    private Characteristic characteristics;
+    private List<String> skills;
+    private Integer armorClass;
+    private Integer maxHp;
+    private Integer currentHp;
+    private Integer deathSaveFailures;
+    private Integer initiative;
+    private Integer speed;
+    private Integer experience;
+    private Integer training;
+    private Integer fate;
+    private Integer inspiration;
+    private Integer spellCastingAbility;
+    private Integer spellSaveDc;
+    private Integer spellAttackBonus;
+    private List<String> actions;
+    private List<String> attacks;
+    private List<String> spells;
+    private List<String> proficiencies;
+    private List<String> languages;
+    private List<String> armorProficiencies;
+    private List<String> weaponsProficiencies;
+    private List<String> passivePerception;
+    private List<String> senses;
+    private List<String> resistances;
+    private List<String> immunities;
+    private List<String> featuresAndTraits;
     private String background;
-    private String personalTraits;
-    private String bonds;
-    private String ideals;
-    private String flaws;
-    private String item;
-    private String money;
-    private String rations;
-    private String waterSkin;
+    private List<String> personalTraits;
+    private List<String> bonds;
+    private List<String> ideals;
+    private List<String> flaws;
+    private List<String> item;
+    private Float money;
+    private Integer rations;
+    private Integer waterSkin;
 }
