@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class Attack {
     private String name;
     private Integer toHit;
+    private DiceToThrow damage;
+    private String type;
 }

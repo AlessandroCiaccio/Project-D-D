@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @Table(name = "character")
 @Entity
@@ -25,8 +26,10 @@ public class CharacterDo {
     @Column(nullable = false)
     private Classe classe;
     private Race race;
-    private List<CharacteristicPoints> characteristics;
-    private List<SkillPoints> skill;
+    @Column(columnDefinition = "hstore")
+    private Map<Characteristic, Integer> characteristics;
+    @Column(columnDefinition = "hstore")
+    private Map<String, Integer> skill;
     private Integer armorClass;
     private Integer maxHp;
     private Integer currentHp = getMaxHp();
@@ -40,7 +43,8 @@ public class CharacterDo {
     private Integer spellCastingAbility;
     private Integer spellSaveDc;
     private Integer spellAttackBonus;
-    private List<ActionType> actions;
+    @Column(columnDefinition = "hstore")
+    private Map<String, String> actions;
     private List<Attack> attacks;
     private List<Spell> spells;
     private List<String> proficiencies;
