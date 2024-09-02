@@ -1,12 +1,15 @@
 package com.alessandrociaccio.ProjectDandD.features.character;
 
-import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.*;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.ArmorProficiencies;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Classe;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Race;
+import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.WeaponProficiencies;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.*;
-import jakarta.persistence.Column;
 import lombok.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -34,7 +37,7 @@ public class CharacterDto {
     private Integer spellCastingAbility;
     private Integer spellSaveDc;
     private Integer spellAttackBonus;
-    private Map<String, String> actions;
+    private List<Action> actions;
     private List<Attack> attacks;
     private List<Spell> spells;
     private List<String> proficiencies;

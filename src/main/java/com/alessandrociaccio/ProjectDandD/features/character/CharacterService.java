@@ -1,12 +1,14 @@
 package com.alessandrociaccio.ProjectDandD.features.character;
 
-import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Characteristic;
 import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Classe;
 import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Race;
+import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Action;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Attack;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Details;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Training;
 import org.springframework.http.ResponseEntity;
+
+import java.util.UUID;
 
 public interface CharacterService {
     ResponseEntity<?> createCharacter(CharacterDto characterDto);
@@ -49,7 +51,7 @@ public interface CharacterService {
 
     ResponseEntity<?> updateSpellAttackBonus(Long id, Integer spellAttackBonus);
 
-    ResponseEntity<?> updateAction(Long id, String action, String type);
+    ResponseEntity<?> updateAction(Long id, Action action);
 
     ResponseEntity<?> updateAttack(Long id, Attack attack);
 

@@ -3,6 +3,7 @@ package com.alessandrociaccio.ProjectDandD.features.character;
 import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Characteristic;
 import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Classe;
 import com.alessandrociaccio.ProjectDandD.features.character.enumProperties.Race;
+import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Action;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Attack;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Details;
 import com.alessandrociaccio.ProjectDandD.features.character.objectProperties.Training;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.EnumMap;
 import java.util.Map;
 
 @Service
@@ -44,7 +46,13 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public ResponseEntity<?> updateDetails(Long id, Details details) {
         CharacterDo characterDo = characterRepository.getReferenceById(id);
-        characterDo.setDetails(details);
+        characterDo.setAge(details.getAge());
+        characterDo.setHeight(details.getHeight());
+        characterDo.setWeight(details.getWeight());
+        characterDo.setDistinguishingFeature(details.getDistinguishingFeature());
+        characterDo.setMotivation(details.getMotivation());
+        characterDo.setHabit(details.getHabit());
+
         characterRepository.save(characterDo);
         return new ResponseEntity<>(characterMapper.convertCharacterDoToDto(characterDo), HttpStatus.OK);
     }
@@ -69,7 +77,7 @@ public class CharacterServiceImpl implements CharacterService {
     public ResponseEntity<?> updateCharacteristicPoints(Long id, String characteristic, Integer points) {
         CharacterDo characterDo = characterRepository.getReferenceById(id);
         try {
-            characterDo.setCharacteristics(Map.of(Characteristic.valueOf(characteristic), points));
+            characterDo.setCharacteristics((EnumMap<Characteristic, Integer>) Map.of(Characteristic.valueOf(characteristic), points));
         } catch (IllegalArgumentException e) {
             return null;
         }
@@ -174,9 +182,9 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
-    public ResponseEntity<?> updateAction(Long id, String action, String type) {
+    public ResponseEntity<?> updateAction(Long id, Action action) {
         CharacterDo characterDo = characterRepository.getReferenceById(id);
-        characterDo.setActions(Map.of(action, type));
+        characterDo.getActions().add(action);
         characterRepository.save(characterDo);
         return new ResponseEntity<>(characterMapper.convertCharacterDoToDto(characterDo), HttpStatus.OK);
     }

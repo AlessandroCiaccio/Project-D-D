@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Training {
-    private String training;
+    private String skillToLearn;
     private Integer percentage;
 }

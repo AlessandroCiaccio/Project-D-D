@@ -15,4 +15,5 @@ spring:
     show_sql: true
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL8Dialect
 
